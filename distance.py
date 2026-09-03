@@ -21,7 +21,7 @@ def haversine(lat1, lon1, lat2, lon2):
 
 if __name__ == "__main__":
     LHR =  (51.4700, -0.4543)
-    JFK = (40.6413, -73.7781)
+    JFK =  (40.6413, -73.7781)
 
-distance = haversine(*LHR, *JFK)
-print(f"Distance between LHR and JFK: {distance:.2f} km")
+    distance = haversine(*LHR, *JFK)
+    print(f"Distance between LHR and JFK: {distance:.2f} km")
