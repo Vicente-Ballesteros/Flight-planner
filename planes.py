@@ -16,10 +16,3 @@ def get_plane_info(plane_name):
 
 
 
-if __name__ == "__main__":
-    plane_name = input("Enter the name of the plane: ").strip().upper()
-    if plane_name in plane_data:
-        speed, range = get_plane_info(plane_name)
-        print(f"Plane: {plane_name}")
-        print(f"Speed: {speed} km/h")
-        print(f"Range: {range} km")
