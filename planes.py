@@ -1,5 +1,7 @@
 import csv
-with open('planes.csv', 'r') as file:
+from pathlib import Path
+
+with open(Path(__file__).parent / 'planes.csv', 'r') as file:
     reader = csv.DictReader(file)
     plane_data = {row['name']: {'speed': float(row['speed']), 'range': float(row['range'])}  for row in reader}
 
