@@ -52,7 +52,7 @@ if __name__ == "__main__":
     speed, range, plane_name = get_valid_plane(plane_name)
 
     distance = haversine(lat1, lon1, lat2, lon2)
-    hours, minutes = flight_t(distance, speed)
     speed, range, plane_name = range_check(distance, speed, range, plane_name)
+    hours, minutes = flight_t(distance, speed)
     print(f"The flight time from {iata1} to {iata2} using the {plane_name} is approximately {hours} hours and {minutes} minutes")
     print(f"The distance between {iata1} and {iata2} is approximately {distance:.2f} km.")
