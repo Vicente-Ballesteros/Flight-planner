@@ -1,7 +1,8 @@
 from airports import get_airport_coordinates
 from distance import haversine
 from flight_time import flight_t    
-from planes import get_plane_info  
+from planes import get_plane_info, plane_data
+import sys
 
 def get_valid_plane(plane_name):
     while True:
@@ -30,10 +31,15 @@ def get_valid_airport(iata_code):
 
 def range_check(distance,speed, range, plane_name):
     while True:
-        if distance < range:
+        if distance <= range:
             break
         else:
             print(f"The distance of {distance:.2f} km exceeds the plane's range of {range:.2f} km.")
+            capable = [name for name, info in plane_data.items() if info['range'] >= distance]
+            if not capable:
+                print("No plane in the list has enough range for this flight.")
+                sys.exit(1)
+            print(f"Planes that can make this flight: {', '.join(capable)}")
             plane_name = input("Enter the name of another plane: ").strip().upper()
             speed, range, plane_name = get_valid_plane(plane_name)
 
@@ -48,6 +54,10 @@ if __name__ == "__main__":
     iata_code2= input("Enter the IATA code of the airport: ").strip().upper()
     iata1, lat1, lon1 = get_valid_airport(iata_code1)
     iata2, lat2, lon2 = get_valid_airport(iata_code2)
+    while iata2 == iata1:
+        print("The departure and arrival airports must be different.")
+        iata_code2 = input("Enter the IATA code of the airport: ").strip().upper()
+        iata2, lat2, lon2 = get_valid_airport(iata_code2)
     plane_name = input("Enter the name of the plane: ").strip().upper()
     speed, range, plane_name = get_valid_plane(plane_name)
 
