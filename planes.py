@@ -11,8 +11,8 @@ with open(Path(__file__).parent / 'planes.csv', 'r') as file:
 def get_plane_info(plane_name):
     if plane_name in plane_data:
         speed = plane_data[plane_name]['speed']
-        range = plane_data[plane_name]['range']
-        return speed, range
+        max_range = plane_data[plane_name]['range']
+        return speed, max_range
     else:
         return None 
 
